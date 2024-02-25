@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  #button {
+    cursor: pointer;
+  }
+</style>
+
+<section>
+  <article>
+    <h1>Make a reservation</h1>
+    <div class="row">
+      <div class="column">
+        <form id="reservation-form" action="" method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" id="button">
+        </form>
+      </div>
+
+      <div class="column">
+        <figure class="figure">
+          <img src="{% static 'img/restaurant_outside.jpg' %}" alt="Mario and Adrian" />
+        </figure>
+      </div>
+    </div>
+  </article>
+</section>
+
+<script>
+  document.getElementById('reservation-form').addEventListener('submit', function(event) {
+    alert('Reservation submitted successfully!');
+  });
+</script>
+{% endblock %}

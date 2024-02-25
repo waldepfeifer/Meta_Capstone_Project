@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .menu-item-image {
+        width: auto; /* Set the desired width */
+        height: 150px; /* Maintain aspect ratio */
+    }
+</style>
+
+<h1>Menu</h1>
+<div class="column">
+    <section>
+    {% for item in menu.menu %}
+        <article>
+        <a href="{% url 'menu_item' pk=item.pk %}">
+          <h2>{{ item.name }}</h2>
+          <img src="{% static 'img/menu_items/' %}{{ item.name }}.jpg" class="menu-item-image">
+          </a>
+          <p>
+            ${{ item.price }}.00
+
+          </p>
+        </article>
+    {% endfor %}
+    </section>
+</div>
+
+{% endblock %}
